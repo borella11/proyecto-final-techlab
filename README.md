@@ -1,63 +1,64 @@
-# Proyecto Final - API REST de Productos (Techlab)
+# Proyecto Final - API de Repuestos de Autos (Teclab)
 
-API REST desarrollada con Node.js, Express, Firebase Firestore y autenticación con JWT.
+API REST para la gestión de catálogo de repuestos de autos, con autenticación mediante JWT y conexión a base de datos Firestore de Firebase.
 
-## Estructura del Proyecto
-
-El código está separado en capas para ordenar las responsabilidades:
-
-- `src/config/`: Conexión con Firebase.
-- `src/controllers/`: Controladores que reciben las peticiones y devuelven respuestas.
-- `src/middlewares/`: Middleware para validar el token JWT.
-- `src/models/`: Modelo para consultar la base de datos Firestore.
-- `src/routes/`: Definición de endpoints.
-- `src/services/`: Lógica de negocio y validaciones.
-
-## Instalación y Uso
+## Cómo correr el proyecto
 
 1. Instalar dependencias:
 ```bash
 npm install
 ```
 
-2. Configurar las variables en el archivo `.env`:
-```env
-PORT=3000
-JWT_SECRET=techlab_secreto_2026
-ADMIN_EMAIL=admin@techlab.com
-ADMIN_PASSWORD=admin1234
-
-FIREBASE_API_KEY=tu_api_key
-FIREBASE_AUTH_DOMAIN=tu_proyecto.firebaseapp.com
-FIREBASE_PROJECT_ID=tu_proyecto_id
-FIREBASE_STORAGE_BUCKET=tu_proyecto.appspot.com
-FIREBASE_MESSAGING_SENDER_ID=tu_sender_id
-FIREBASE_APP_ID=tu_app_id
-```
+2. Configurar las variables en el archivo `.env` (usar `.env.example` de guía).
 
 3. Iniciar el servidor:
 ```bash
 npm start
 ```
 
-## Endpoints
+El servidor arranca por defecto en `http://localhost:3000`.
 
-### Autenticación
-- `POST /auth/login`: Inicia sesión y devuelve un token Bearer.
-  - Body: `{ "email": "admin@techlab.com", "password": "admin1234" }`
+---
 
-### Productos
-- `GET /api/products`: Devuelve todos los productos (público).
-- `GET /api/products/:id`: Devuelve un producto por ID (público).
-- `POST /api/products/create`: Crea un nuevo producto (requiere token en Authorization header).
-- `PUT /api/products/:id`: Actualiza un producto (requiere token en Authorization header).
-- `DELETE /api/products/:id`: Elimina un producto (requiere token en Authorization header).
+## Usuario de prueba (Login)
 
-## Códigos de estado HTTP
-- `200`: Petición exitosa.
-- `201`: Producto creado con éxito.
-- `400`: Error en los datos enviados (ej. precio negativo o campo faltante).
-- `401`: No autorizado (falta token o credenciales incorrectas).
-- `403`: Acceso denegado (token inválido o vencido).
-- `404`: Ruta o producto no encontrado.
-- `500`: Error interno del servidor o de base de datos.
+Para autenticarse y poder probar las rutas protegidas:
+- **Endpoint:** `POST /auth/login`
+- **Email:** `admin@techlab.com`
+- **Password:** `admin1234`
+
+La respuesta devuelve el token que hay que enviar en la cabecera `Authorization: Bearer <token>`.
+
+---
+
+## Rutas de la API
+
+### Productos (Públicas)
+- `GET /api/products`: devuelve el listado completo de repuestos.
+- `GET /api/products/:id`: busca un repuesto por ID.
+
+### Productos (Protegidas con Token)
+- `POST /api/products/create`: crea un repuesto nuevo (requiere `name` y `price`).
+- `PUT /api/products/:id`: actualiza los datos de un repuesto.
+- `DELETE /api/products/:id`: elimina un repuesto por ID.
+
+Ejemplo de body en JSON para crear o editar:
+```json
+{
+  "name": "Filtro de Aire Bosch",
+  "price": 18500,
+  "stock": 15,
+  "category": "Filtros",
+  "description": "Filtro de aire de motor"
+}
+```
+
+---
+
+## Códigos de error implementados
+
+- **400:** Datos inválidos o incompletos (por ejemplo si falta el nombre o el precio es negativo).
+- **401:** Acceso no autorizado (cuando falta el token o las credenciales son incorrectas).
+- **403:** Acceso prohibido (token inválido o expirado).
+- **404:** Ruta o producto no encontrado.
+- **500:** Error interno del servidor o problemas con el servicio de base de datos.
