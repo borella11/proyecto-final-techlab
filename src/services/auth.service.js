@@ -9,28 +9,19 @@ const ADMIN_EMAIL = process.env.ADMIN_EMAIL || "admin@techlab.com";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin1234";
 
 export const AuthService = {
-  /**
-   * Autentica credenciales y genera un Bearer token JWT
-   * @param {string} email
-   * @param {string} password
-   */
   async login(email, password) {
     if (!email || !password) {
-      const error = new Error("El correo ('email') y la contraseña ('password') son obligatorios");
+      const error = new Error("El email y password son obligatorios");
       error.statusCode = 400;
       throw error;
     }
 
-    // Validación de credenciales
-    const isValidUser = email === ADMIN_EMAIL && password === ADMIN_PASSWORD;
-
-    if (!isValidUser) {
-      const error = new Error("Credenciales de autenticación inválidas");
+    if (email !== ADMIN_EMAIL || password !== ADMIN_PASSWORD) {
+      const error = new Error("Credenciales inválidas");
       error.statusCode = 401;
       throw error;
     }
 
-    // Generación del token
     const payload = {
       email,
       role: "admin"
@@ -42,12 +33,8 @@ export const AuthService = {
 
     return {
       token,
-      tokenType: "Bearer",
-      expiresIn: JWT_EXPIRES_IN,
-      user: {
-        email,
-        role: "admin"
-      }
+      tipo: "Bearer",
+      usuario: email
     };
   }
 };
