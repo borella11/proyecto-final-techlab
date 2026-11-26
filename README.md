@@ -1,4 +1,4 @@
-# Proyecto Final - API de Repuestos de Autos (Teclab)
+# Proyecto Final - API de Repuestos de Autos.
 
 API REST para la gestión de catálogo de repuestos de autos, con autenticación mediante JWT y conexión a base de datos Firestore de Firebase.
 
