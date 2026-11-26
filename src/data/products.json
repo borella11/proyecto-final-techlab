@@ -1,38 +1,56 @@
 [
   {
     "id": "prod-1",
-    "name": "Notebook Lenovo ThinkPad E14",
-    "price": 1250,
-    "stock": 10,
-    "category": "Computación",
-    "description": "Intel Core i5, 16GB RAM, SSD 512GB, Pantalla 14 FHD",
+    "name": "Pastillas de Freno Delanteras Bosch",
+    "price": 48500,
+    "stock": 20,
+    "category": "Frenos",
+    "description": "Juego de pastillas para disco delantero, compuesto semimetálico",
     "createdAt": "2026-11-26T10:00:00.000Z"
   },
   {
     "id": "prod-2",
-    "name": "Mouse Inalámbrico Logitech MX Master 3S",
-    "price": 120,
-    "stock": 25,
-    "category": "Periféricos",
-    "description": "Sensor Darkfield 8000 DPI, Bluetooth y receptor Bolt",
+    "name": "Kit Distribución Gates con Bomba de Agua",
+    "price": 165000,
+    "stock": 8,
+    "category": "Motor",
+    "description": "Correa de distribución, tensor y bomba de agua para motor 1.6",
     "createdAt": "2026-11-26T10:30:00.000Z"
   },
   {
     "id": "prod-3",
-    "name": "Teclado Mecánico RGB Redragon Kumara K552",
-    "price": 65,
-    "stock": 18,
-    "category": "Periféricos",
-    "description": "Switches mecánicos Outemu Red, layout en español",
+    "name": "Amortiguador Delantero Monroe Fric-Rot",
+    "price": 85000,
+    "stock": 14,
+    "category": "Suspensión",
+    "description": "Amortiguador presurizado a gas para tren delantero",
     "createdAt": "2026-11-26T11:00:00.000Z"
   },
   {
     "id": "prod-4",
-    "name": "Monitor Curvo Samsung 27 pulgadas",
-    "price": 280,
-    "stock": 14,
-    "category": "Monitores",
-    "description": "Resolución Full HD 1080p, 75Hz, panel VA antirreflejo",
+    "name": "Filtro de Aceite Mann Filter W712",
+    "price": 12500,
+    "stock": 35,
+    "category": "Filtros",
+    "description": "Filtro blindado de alta retención para cambio de aceite",
     "createdAt": "2026-11-26T11:15:00.000Z"
+  },
+  {
+    "id": "prod-5",
+    "name": "Batería Moura 12V 65Ah",
+    "price": 145000,
+    "stock": 10,
+    "category": "Electricidad",
+    "description": "Batería libre de mantenimiento plata-calcio",
+    "createdAt": "2026-11-26T11:30:00.000Z"
+  },
+  {
+    "id": "prod-6",
+    "name": "Juego de Bujías NGK Iridium (Kit x4)",
+    "price": 38000,
+    "stock": 18,
+    "category": "Encendido",
+    "description": "Bujías de encendido de alto rendimiento",
+    "createdAt": "2026-11-26T11:45:00.000Z"
   }
 ]
